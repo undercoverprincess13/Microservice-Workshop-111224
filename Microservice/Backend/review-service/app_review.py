@@ -90,11 +90,7 @@ def get_rating(product_id: int):
     :param product_id:
     :return: rating of the product
     """
-    # Lade Daten aus der JSON-Datei
-    ratings = load_data(Reviews_File)
-    for rating in ratings:
-        if rating["id"] == product_id:
-            return rating["rating"]
+
 
 
 @app.get("/{product_id}/reviews")
@@ -104,15 +100,6 @@ def get_reviews(product_id: int):
     :param product_id:
     :return: the 3 newest reviews of the product
     """
-    # Lade Daten aus der JSON-Datei
-    reviews = load_data(Reviews_File)
-    print(reviews)
-    for review in reviews:
-        if review["id"] == product_id:
-            # Sort the reviews by date
-            review["reviews"].sort(key=lambda x: datetime.strptime(x['date'], "%Y-%m-%dT%H:%M:%S.%fZ"), reverse=True)
-            # Return the first 3 reviews
-            return review["reviews"][:4]
 
 
 @app.post("/{product_id}/review")
@@ -123,13 +110,7 @@ async def add_review(product_id: int, review: ReviewRequest):
     :param review:
     :return: message if the review was saved successfully
     """
-    try:
-        if not review:
-            raise HTTPException(status_code=400, detail="Missing 'email' field")
-        save_review(review, product_id)
-        return {"message": "Review saved successfully"}
-    except json.JSONDecodeError:
-        raise HTTPException(status_code=400, detail="Invalid JSON format")
+
 
 
 if __name__ == "__main__":
