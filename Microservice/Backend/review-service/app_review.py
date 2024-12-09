@@ -109,7 +109,6 @@ def get_reviews(product_id: int):
         if review["id"] == product_id:
             # Sort the reviews by date
             review["reviews"].sort(key=lambda x: datetime.strptime(x['date'], "%Y-%m-%dT%H:%M:%S.%fZ"), reverse=True)
-            # Return the first 3 reviews
             return review["reviews"][:4]
 
 
