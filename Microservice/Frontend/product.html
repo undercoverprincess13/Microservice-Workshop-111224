@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktanzeige</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product_style.css">
+</head>
+<body>
+<header class="bg-primary text-white py-4">
+    <div class="d-flex align-items-center">
+        <a href="http://localhost:3000" class="me-3 ms-2">
+            <button class="btn btn-secondary">Home</button>
+        </a>
+        <div class="flex-grow-1 text-center">
+            <h1>EDP E-Commerce</h1>
+            <p class="lead">Von Monolith zu Microservices: Shop-Anwendung als Praxisbeispiel</p>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="product-container">
+        <img id="product-img" class="product-img" alt="Produktbild">
+        <div class="product-details">
+            <h1 id="product-name"></h1>
+            <p id="product-price" class="text-muted"></p>
+            <div id="rating" class="stars"></div>
+        </div>
+        <button onclick="history.back()" class="btn btn-primary mt-3">Zurück</button>
+    </div>
+</div>
+
+
+<!-- Kunden kauften auch -->
+<section>
+    <h2 class="text-center mb-4">Kunden kauften auch</h2>
+    <div id="similar-list" class="product-grid"></div>
+    <div id="similar-pagination-controls" class="pagination-controls mt-4 text-center">
+        <button class="btn btn-primary me-2" id="previous-button">◀️</button>
+        <button class="btn btn-primary" id="next-button">▶️</button>
+    </div>
+</section>
+
+
+<!-- Rezension -->
+<section>
+    <h2 class="text-center mb-4">Rezensionen</h2>
+    <div class="pagination-controls mt-4 text-center">
+        <div id="review-list" class="product-grid"></div>
+    </div>
+</section>
+
+
+<!-- Rezension abschicken -->
+<div class="container my-5">
+    <h1 class="text-center mb-4">Rezension einreichen</h1>
+    <div class="card shadow p-4">
+        <form id="reviewForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Dein Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-Mail-Adresse</label>
+                <input type="email" class="form-control" id="review_email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="reviewText" class="form-label">Rezension</label>
+                <textarea class="form-control" id="reviewText" rows="5" placeholder="Schreibe deine Rezension hier..."
+                          required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Bewertung</label>
+                <select class="form-select" id="product_rating" required>
+                    <option value="" disabled selected>Wähle eine Bewertung</option>
+                    <option value="1">⭐ - 1 Stern</option>
+                    <option value="2">⭐⭐ - 2 Sterne</option>
+                    <option value="3">⭐⭐⭐ - 3 Sterne</option>
+                    <option value="4">⭐⭐⭐⭐ - 4 Sterne</option>
+                    <option value="5">⭐⭐⭐⭐⭐ - 5 Sterne</option>
+                </select>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-primary">Rezension abschicken</button>
+            </div>
+            <p id="product_review_responseMessage" class="text-center mt-3"></p>
+        </form>
+    </div>
+</div>
+
+<footer class="bg-dark text-white py-3">
+    <div class="container text-center">
+        <div class="container d-flex justify-content-center align-items-center vh-50">
+            <div class="card shadow p-4" style="max-width: 600px; width: 100%;">
+                <h2 class="text-center mb-4">Newsletter Anmeldung</h2>
+                <form id="newsletterForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-Mail-Adresse</label>
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="name@example.com"
+                                required
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Anmelden</button>
+                </form>
+                <p id="newsletter_responseMessage" class="text-center mt-3"></p>
+            </div>
+        </div>
+        <p>&copy; 2024 EDP E-Commerce Shop. Alle Rechte vorbehalten.</p>
+    </div>
+</footer>
+<script type="module" src="product.js"></script>
+</body>
+</html>

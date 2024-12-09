@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: api-gateway.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - product-service
+      - review-service
+      - newsletter-service
+    networks:
+      - backend-network
+
+
+  product-service:
+    build:
+      context: ./Backend/product-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./Backend/product-service/data:/app/data
+    networks:
+      - backend-network
+
+  review-service:
+    build:
+      context: ./Backend/review-service
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./Backend/review-service/data:/app/data
+    networks:
+      - backend-network
+
+  newsletter-service:
+    build:
+      context: ./Backend/newsletter-service
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./Backend/newsletter-service/data:/app/data
+    networks:
+      - backend-network
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - backend-network
+networks:
+  backend-network:
+    driver: bridge
+
