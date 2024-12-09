@@ -1,0 +1,48 @@
+.product-container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.product-img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.product-details {
+    margin-top: 20px;
+}
+
+
+/* Sterne   */
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: gold;
+}
+.star-full {
+    content: '★';
+}
+.star-half {
+    position: relative;
+    display: inline-block;
+    color: lightgray; /* Leere Sternfarbe */
+}
+.star-half::before {
+    content: '★';
+    position: absolute;
+    color: gold; /* Gefüllte Sternfarbe */
+    width: 50%;
+    overflow: hidden;
+    display: inline-block;
+}
+.star-empty {
+    content: '☆';
+    color: lightgray;
+}
