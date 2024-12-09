@@ -90,7 +90,6 @@ def get_rating(product_id: int):
     :param product_id:
     :return: rating of the product
     """
-    # Lade Daten aus der JSON-Datei
     ratings = load_data(Reviews_File)
     for rating in ratings:
         if rating["id"] == product_id:
@@ -104,7 +103,6 @@ def get_reviews(product_id: int):
     :param product_id:
     :return: the 3 newest reviews of the product
     """
-    # Lade Daten aus der JSON-Datei
     reviews = load_data(Reviews_File)
     print(reviews)
     for review in reviews:
