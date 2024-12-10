@@ -76,16 +76,17 @@ This project is a microservice-based application that includes an API Gateway, P
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/your-repo.git
+    git clone https://github.com/undercoverprincess13/Microservice-Workshop-111224.git
     
     ```
+2. **Open Docker Desktop**
 
-2. **Build and run the containers**:
+3. **Build and run the containers**:
     ```sh
     docker-compose up --build
     ```
 
-3. **Access the application**:
+4. **Access the application**:
     - Frontend: `http://localhost:3000`
     - API Gateway: `http://localhost:8080`
 
@@ -101,8 +102,8 @@ This project is a microservice-based application that includes an API Gateway, P
 - `GET /products/new`: Get new products
 - `GET /products/bestseller`: Get bestsellers
 - `GET /products/recommended`: Get recommended products
-- `GET /products/products/{id}`: Get product details by ID
-- `GET /products/similar_items/{id}`: Get similar products by ID
+- `GET /products/similar_items/{product_id}`: Get similar products by ID
+- `GET /products/{product_id}`: Get product details by ID
 
 ### Review Service
 
@@ -130,10 +131,7 @@ To run the application as a monolithic application:
         docker run -p 8081:8081 my-monolith
         ```
 
-    - **With persistent storage using Docker Volumes**:
-        ```sh
-        docker run -d -p 8088:8088 -v 
-        ```
+    
 
 4. **Access the application**:
     - `http://localhost:8081`
