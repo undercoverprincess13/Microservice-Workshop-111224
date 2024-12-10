@@ -36,11 +36,10 @@ def save_newsletter_mail(email):
         raise HTTPException(status_code=500)
     data["mails"].append(email)
     with open(Newsletter_file, "w") as file:
-        json.dump(data, file, indent=4) \
- \
-        @ app.post("/newsletter")
+        json.dump(data, file, indent=4)
 
 
+@app.post("/newsletter")
 def newsletter(newsletter: NewsletterRequest):
     """
     Save the email to the Newsletter_file (newsletter_mails.json)
